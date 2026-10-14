@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Арна Оспан — Портфолио</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --milk: #f7f4ef;
+      --milk-2: #f0ece5;
+      --sky: #bfdcff;
+      --sky-soft: #d9ebff;
+      --blue: #7aa9df;
+      --text: #2f3440;
+      --muted: #707888;
+      --line: rgba(47, 52, 64, 0.08);
+      --white: rgba(255,255,255,0.65);
+      --shadow: 0 30px 80px rgba(124, 151, 190, 0.12);
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top right, rgba(191,220,255,0.45), transparent 30%),
+        linear-gradient(to bottom, #faf8f4, #f4f0ea);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(100% - 12rem, 1400px);
+      margin: 0 auto;
+      padding: 0.9rem 1.2rem;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(247, 244, 239, 0.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(47, 52, 64, 0.05);
+    }
+
+    .nav-inner {
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      letter-spacing: 0.24em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 8rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: rgba(191,220,255,0.22);
+      top: -300px;
+      right: -200px;
+      filter: blur(30px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.7fr;
+      align-items: center;
+      gap: 4rem;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-title {
+      margin-top: 2rem;
+      font-family: var(--serif);
+      font-size: clamp(5rem, 12vw, 10rem);
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      color: var(--text);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: rgba(122,169,223,0.95);
+    }
+
+    .hero-description {
+      margin-top: 2.5rem;
+      max-width: 420px;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .hero-role {
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(122,169,223,0.2);
+      color: var(--text);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-role::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .portrait-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      padding-top: 3rem;
+    }
+
+    .portrait-glow {
+      position: absolute;
+      inset: auto;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background: rgba(191,220,255,0.38);
+      filter: blur(40px);
+      z-index: 0;
+    }
+
+    .portrait-card {
+      position: relative;
+      width: 380px;
+      height: 500px;
+      border-radius: 34px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      z-index: 2;
+    }
+
+    .portrait-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.9) brightness(1.02);
+    }
+
+    .portrait-caption {
+      position: absolute;
+      left: 1.4rem;
+      right: 1.4rem;
+      bottom: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 7rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    .section-label::after {
+      content: '';
+      width: 52px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.45;
+    }
+
+    .section-note {
+      color: var(--muted);
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 5rem;
+    }
+
+    .about-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .about-title em {
+      color: var(--blue);
+    }
+
+    .about-text {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1.5rem;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 0.98rem;
+      max-width: 640px;
+    }
+
+    .quote {
+      margin-top: 2.5rem;
+      padding: 1.6rem;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(122,169,223,0.12);
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+
+    .skills-card {
+      padding: 2rem;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .mini-title {
+      margin-bottom: 1.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .tag {
+      padding: 0.6rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(191,220,255,0.25);
+      border: 1px solid rgba(122,169,223,0.12);
+      color: var(--text);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      gap: 1.8rem;
+    }
+
+    .project-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      border-radius: 38px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      transition: 0.3s ease;
+    }
+
+    .project-featured:hover,
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .project-media {
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(191,220,255,0.5), transparent 40%),
+        linear-gradient(135deg, #f9f6f2, #eaf2ff);
+    }
+
+    .mockup {
+      width: 74%;
+      height: 68%;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(122,169,223,0.15);
+      box-shadow: 0 18px 60px rgba(122,169,223,0.12);
+      overflow: hidden;
+    }
+
+    .mockup-top {
+      height: 30px;
+      border-bottom: 1px solid rgba(122,169,223,0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 14px;
+      background: rgba(255,255,255,0.65);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(122,169,223,0.7);
+    }
+
+    .mockup-layout {
+      display: grid;
+      grid-template-columns: 24% 1fr;
+      height: calc(100% - 30px);
+    }
+
+    .mockup-side {
+      border-right: 1px solid rgba(122,169,223,0.08);
+      padding: 12px;
+    }
+
+    .line {
+      height: 8px;
+      margin-bottom: 8px;
+      border-radius: 99px;
+      background: rgba(122,169,223,0.12);
+    }
+
+    .line.active {
+      background: rgba(122,169,223,0.35);
+    }
+
+    .mockup-content {
+      padding: 14px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .mini-card {
+      height: 40px;
+      border-radius: 14px;
+      background: rgba(191,220,255,0.28);
+    }
+
+    .table {
+      display: grid;
+      gap: 8px;
+    }
+
+    .table span {
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(122,169,223,0.12);
+    }
+
+    .project-info {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-meta {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .project-type {
+      margin-top: 0.7rem;
+      color: var(--blue);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .project-title {
+      margin-top: 2rem;
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .project-title em {
+      color: var(--blue);
+      font-style: italic;
+    }
+
+    .project-description {
+      margin-top: 1.5rem;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 0.95rem;
+      max-width: 520px;
+    }
+
+    .project-tags {
+      margin-top: 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .project-tag {
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(191,220,255,0.22);
+      border: 1px solid rgba(122,169,223,0.12);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .project-link {
+      margin-top: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--blue);
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .project-link::before {
+      content: '';
+      width: 42px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+
+    .project-card {
+      overflow: hidden;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow: var(--shadow);
+      transition: 0.3s ease;
+    }
+
+    .project-card .project-media {
+      min-height: 320px;
+    }
+
+    .project-card .project-info {
+      padding: 2rem;
+    }
+
+    .project-card .project-title {
+      font-size: 2.2rem;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      padding: 4rem;
+      border-radius: 40px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .contact-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .contact-title em {
+      color: var(--blue);
+      font-style: italic;
+    }
+
+    .contact-text {
+      margin-top: 2rem;
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .contact-links {
+      margin-top: 3rem;
+      display: grid;
+      gap: 1rem;
+      max-width: 520px;
+    }
+
+    .contact-link {
+      padding: 1.2rem 1.4rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(122,169,223,0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateX(4px);
+    }
+
+    .footer {
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px) {
+      .container {
+        width: min(100% - 2rem, 1440px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .project-featured,
+      .project-row {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-card {
+        width: 100%;
+        max-width: 380px;
+        height: 500px;
+        margin: 0 auto;
+      }
+
+      .portrait-wrapper {
+        padding-top: 1rem;
+      }
+
+      .contact-box {
+        padding: 2.5rem;
+      }
+    }
+  .portrait-card::after{content:"";position:absolute;inset:65% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.35));pointer-events:none}.portrait-caption{z-index:1}.skills-card{align-self:start}.background-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}.background-title{font-family:var(--serif);font-size:3rem;font-weight:400;margin-bottom:28px}.background-entry{padding:24px 0;border-top:1px solid var(--line)}.background-entry h3{font-size:20px;font-weight:500;margin:14px 0 10px}.background-entry p:not(.eyebrow){color:var(--muted);font-size:14px;line-height:1.85}.background-place{margin-bottom:12px}.contact-value{font-size:12px;letter-spacing:0;text-transform:none;text-align:right}.contact-link{gap:16px}@media(max-width:700px){.background-grid{grid-template-columns:1fr;gap:32px}.contact-link{flex-wrap:wrap}.contact-value{text-align:left}.section-header{gap:16px;flex-wrap:wrap}}.container.hero-grid{width:min(100% - 12rem,1400px)}@media(max-width:980px){.container.hero-grid{width:min(100% - 2rem,1440px)}} .experience-details{margin-top:20px;padding-left:18px;color:var(--muted);font-size:14px;line-height:1.85}.experience-details li{padding-left:6px;margin-bottom:14px}.experience-details li::marker{color:var(--blue)} .contact-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(250px,.7fr);gap:56px;align-items:center}.figma-card{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:36px 24px 44px;border:1px solid rgba(122,169,223,.18);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.8),rgba(217,235,255,.35));transition:transform .25s,box-shadow .25s}.figma-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.figma-card:focus-visible{outline:2px solid var(--blue);outline-offset:5px}.figma-card-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}.figma-icon{margin:34px 0 28px}.figma-card-title{font-family:var(--serif);font-size:38px;line-height:1.05}.figma-card-note{font-size:12px;line-height:1.6;color:var(--muted);margin-top:16px}.figma-card-arrow{position:absolute;right:22px;bottom:18px;color:var(--blue);font-size:24px}@media(max-width:980px){.contact-layout{grid-template-columns:1fr;gap:32px}.figma-card{width:100%;max-width:520px}.contact-title{font-size:clamp(3rem,6vw,5rem)}}</style>
+<style>.lang-switch{display:flex;gap:8px;font-family:var(--sans);font-size:12px;letter-spacing:.06em}.lang-switch a{padding:9px 12px;border-radius:999px;border:1px solid var(--line)}.lang-switch .active{background:var(--text);color:var(--milk)}.nav-inner{gap:20px}.nav-links{gap:2rem}</style><style>:root{--milk:#090909;--milk-2:#121212;--sky:#232938;--sky-soft:#202634;--blue:#a9c7f1;--text:#f1f0ed;--muted:#a3a7af;--line:rgba(255,255,255,.12);--white:rgba(255,255,255,.035);--shadow:0 24px 64px rgba(0,0,0,.24);--serif:'Georgia','Times New Roman',serif}body{background:#090909}body::before{opacity:.1}.nav{background:rgba(9,9,9,.9);border-color:var(--line)}.hero::before,.portrait-glow{background:rgba(91,121,160,.09)}.portrait-card,.skills-card,.project-featured,.project-card,.contact-box,.quote,.hero-role,.contact-link{background:#111;border-color:var(--line)}.project-media,.cover{background:linear-gradient(135deg,#16191f,#0e0f12)}.figma-card{background:linear-gradient(145deg,#191c23,#111217);border-color:var(--line)}.tag,.project-tag,.case-actions a{background:#1b2029;border-color:var(--line);color:var(--text)}.step{background:#151515}.hero-title em{color:var(--blue)}.contact-title{font-size:clamp(2.8rem,5vw,4.5rem)}.hero-title{font-size:clamp(4rem,10vw,9rem)}.lang-switch{display:flex;gap:8px;font-family:var(--sans);font-size:12px;letter-spacing:.06em}.lang-switch a{padding:9px 12px;border-radius:999px;border:1px solid var(--line)}.lang-switch .active{background:var(--text);color:var(--milk)}.nav-links{gap:2rem}.nav-inner{gap:20px}.case-title{font-size:clamp(50px,8vw,110px)}.case-heading{font-size:36px}.contact-links{max-width:100%}@media(max-width:600px){.contact-title{font-size:38px}.case-heading{font-size:30px}.case-wrap{padding:0 20px}}</style></head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="logo">ARNA</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#works">Проекты</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul><div class="lang-switch" aria-label="Language"><a href="index.html" lang="en">EN</a><a class="active" href="index-ru.html" lang="ru">RU</a></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Портфолио 2026</p>
+
+          <h1 class="hero-title">
+            AR<em>NA</em>
+          </h1>
+
+          <p class="hero-description">
+            UX/UI-дизайнер из Алматы с почти двухлетним опытом в продуктовой команде. Превращаю сложные требования в понятные веб и мобильные интерфейсы.
+          </p>
+
+          <div class="hero-role">
+            UX/UI-дизайнер
+          </div>
+        </div>
+
+        <div class="portrait-wrapper">
+          <div class="portrait-glow"></div>
+
+          <div class="portrait-card">
+            <img src="assets/portrait.webp" alt="Portrait of Arna Ospan">
+
+            <div class="portrait-caption">
+              <span>Арна Оспан</span>
+              <span>Алматы</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">02 — Обо мне</p>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <h2 class="about-title">
+              Проектирую продукты<br>
+              с <em>ясностью</em> и логикой.
+            </h2>
+
+            <div class="about-text"><p>Я Арна — UX/UI-дизайнер с образованием в сфере информационных систем. Работаю с внутренними платформами, маркетплейсами и мобильными продуктами, связывая дизайн интерфейса с логикой его работы.</p><p>Перевожу требования в пользовательские сценарии, проектирую формы и многошаговые процессы, организую таблицы, статусы, фильтры и права доступа.</p><p>Работаю с продактами и разработчиками, готовлю макеты к реализации и проверяю готовые интерфейсы. Использую UI kit и дизайн-системы, чтобы сохранять единство продукта.</p></div><div class="quote">От требований до готового интерфейса — мне важно, как работает продукт целиком.</div></div>
+          <div class="skills-card">
+            <p class="mini-title">Навыки</p>
+
+<div class="tags"><span class="tag">Figma</span><span class="tag">UX/UI-дизайн</span><span class="tag">Анализ требований</span><span class="tag">Пользовательские сценарии</span><span class="tag">Прототипирование</span><span class="tag">UI kit и дизайн-системы</span><span class="tag">Веб и мобильные интерфейсы</span><span class="tag">Сложные формы</span><span class="tag">Передача в разработку</span><span class="tag">Проверка реализации</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="background"><div class="container"><div class="section-header"><p class="section-label">Опыт и образование</p></div><div class="background-grid"><div><h2 class="background-title">Опыт работы</h2><article class="background-entry"><p class="eyebrow">2024 — 2026</p><h3>UX/UI-дизайнер</h3><p class="background-place">RAMS Qazaqstan · Алматы</p><p>Работала над клиентскими и внутренними продуктами: личными кабинетами, административными панелями, корпоративными сервисами и мобильным приложением.</p><ul class="experience-details"><li>Анализировала требования к функциям и переводила их в пользовательские сценарии, структуру экранов и макеты для разработки.</li><li>Проектировала сложные сценарии: формы, многошаговые процессы, роли и права доступа, таблицы, статусы, поиск и фильтрацию.</li><li>Совместно с продактами и разработчиками уточняла требования, учитывала технические ограничения и дорабатывала решения.</li><li>Передавала макеты в разработку и проверяла реализацию: находила расхождения с дизайном и помогала их исправлять.</li><li>Улучшала сценарии существующих продуктов и поддерживала дизайн-системы, чтобы новые экраны оставались единообразными, а компоненты — переиспользуемыми.</li></ul></article></div><div><h2 class="background-title">Образование</h2><article class="background-entry"><p class="eyebrow">2025 — 2027 · Учусь</p><h3>Информационные системы</h3><p class="background-place">Университет Turan · Бакалавриат</p></article><article class="background-entry"><p class="eyebrow">2022 — 2025</p><h3>Программное обеспечение</h3><p class="background-place">Колледж Turan</p></article></div></div></div></section>
+    <section id="works">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">03 — Избранные проекты</p>
+          <p class="section-note">4 проекта</p>
+        </div>
+
+        <div class="projects">
+          <a href="mirqan-ru.html" class="project-featured">
+            <div class="project-media"><img src="assets/mirqan-cover.webp" alt="Mirqan product page on a laptop" style="width:100%;height:100%;object-fit:contain;padding:24px"></div>
+
+            <div class="project-info">
+              <div>
+                <p class="project-meta">Проект 01</p>
+                <p class="project-type">Маркетплейс / Электронная коммерция</p>
+
+                <h3 class="project-title">
+                  MIRQAN<br>
+                  <em>Маркетплейс</em>
+                </h3>
+
+                <p class="project-description">
+                  От требований клиента и написания ТЗ до логики продукта и дизайна интерфейса.
+                </p>
+
+                <div class="project-tags">
+                  <span class="project-tag">Маркетплейс</span>
+                  <span class="project-tag">Административная система</span>
+                  <span class="project-tag">UX электронной коммерции</span>
+                  <span class="project-tag">Дизайн-система</span>
+                </div>
+              </div>
+
+              <span class="project-link">Смотреть проект</span>
+            </div>
+          </a>
+
+          <div class="project-row">
+            <a href="inventory-ru.html" class="project-card">
+              <div class="project-media"><img src="assets/inventory-cover.webp" alt="Inventory management interface on a laptop" style="width:100%;height:320px;object-fit:contain;padding:20px"></div>
+<div class="project-info">
+                <div>
+                  <p class="project-meta">Проект 02</p>
+                  <p class="project-type">Внутренняя веб-платформа</p>
+
+                  <h3 class="project-title">
+                    Инвентаризация<br>
+                    <em>Веб-платформа</em>
+                  </h3>
+
+                  <p class="project-description">
+                    Система учёта с поиском по записям, формами товаров и пошаговым оформлением актов передачи.
+                  </p>
+                </div>
+
+                <span class="project-link">Смотреть проект</span>
+              </div>
+            </a>
+
+            <a href="base-ru.html" class="project-card"><div class="project-media"><div style="width:100%;position:relative"><img src="assets/base-cover.webp" alt="Base property catalogue on a laptop" style="width:100%;display:block"></div></div><div class="project-info"><div><p class="project-meta">Проект 03</p><p class="project-type">Недвижимость / Внутренняя платформа</p><h3 class="project-title">Base<br><em>Платформа недвижимости</em></h3><p class="project-description">Каталог объектов, шахматка доступности и карточка помещения, спроектированные по ТЗ.</p></div><span class="project-link">Смотреть проект</span></div></a>
+          </div><a href="fms-ru.html" class="project-featured"><div class="project-media"><img src="assets/fms-cover.webp" alt="FMS mobile interface on two phones" style="width:100%;height:420px;object-fit:contain;padding:24px"></div><div class="project-info"><div><p class="project-meta">Проект 04</p><p class="project-type">Управление недвижимостью / Приложение</p><h3 class="project-title">FMS<br><em>Мобильное приложение</em></h3><p class="project-description">Мобильные экраны для работы с домами, жителями и журналом отключений.</p><div class="project-tags"><span class="project-tag">Мобильный интерфейс</span><span class="project-tag">Формы</span><span class="project-tag">Управление недвижимостью</span></div></div><span class="project-link">Смотреть проект</span></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box"><div class="contact-layout"><div>
+          <h2 class="contact-title">
+            Давайте создадим<br>
+            что-то <em>полезное.</em>
+          </h2>
+
+          <p class="contact-text">
+            Открыта к работе UX/UI-дизайнером, проектам на фрилансе и сотрудничеству с продуктовыми командами.
+          </p>
+
+<div class="contact-links"><a href="mailto:arna97040@gmail.com" class="contact-link"><span>Почта</span><span class="contact-value">arna97040@gmail.com ↗</span></a><a href="https://www.linkedin.com/in/arna-ospan-1bb8573a2" target="_blank" rel="noopener" class="contact-link"><span>LinkedIn</span><span class="contact-value">Арна Оспан ↗</span></a><a href="https://t.me/ospvrna" target="_blank" rel="noopener" class="contact-link"><span>Telegram</span><span class="contact-value">@ospvrna ↗</span></a></div></div><a class="figma-card" href="https://www.figma.com/design/wNQL8c0mZEDbhNdQ6JN8eV/works" target="_blank" rel="noopener"><span class="figma-card-label">Мои работы</span><span class="figma-icon"><svg viewBox="0 0 38 57" width="76" height="114" aria-hidden="true"><path fill="#F24E1E" d="M9.5 0A9.5 9.5 0 000 9.5 9.5 9.5 0 009.5 19H19V0Z"/><path fill="#FF7262" d="M19 0h9.5a9.5 9.5 0 010 19H19Z"/><path fill="#A259FF" d="M9.5 19A9.5 9.5 0 000 28.5 9.5 9.5 0 009.5 38H19V19Z"/><circle fill="#1ABCFE" cx="28.5" cy="28.5" r="9.5"/><path fill="#0ACF83" d="M9.5 38A9.5 9.5 0 000 47.5 9.5 9.5 0 009.5 57 9.5 9.5 0 0019 47.5V38Z"/></svg></span><span class="figma-card-title">Все проекты<br>в Figma</span><span class="figma-card-note">Открыть файл со всеми работами</span><span class="figma-card-arrow" aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>ARNA</span>
+      <span>© 2026 — UX/UI-дизайнер</span>
+    </div>
+  </footer>
+</body>
+</html>
